@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth
 {
-    public class Startup
+    public class AuthStartup
     {
-        public Startup(IConfiguration configuration)
+        public AuthStartup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
