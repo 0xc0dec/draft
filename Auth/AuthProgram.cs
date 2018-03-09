@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Auth
 {
-    public class Program
+    public class AuthProgram
     {
         public static void Main(string[] args)
         {
