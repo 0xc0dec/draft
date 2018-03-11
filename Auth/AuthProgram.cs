@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using Infrastructure.Config;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth
 {
@@ -7,11 +9,14 @@ namespace Auth
     {
         public static void Main(string[] args)
         {
+            var config = new AuthConfig(ConfigBuilder.Build(args, Directory.GetCurrentDirectory()));
+
             var host = new WebHostBuilder()
                 .UseKestrel()
-                .UseUrls()
+                .UseUrls(config.BindUrl ?? "http://*:12500")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseSetting("detailedErrors", "true")
+                .ConfigureServices(services => services.AddSingleton<IAuthConfig>(config))
                 .UseStartup<AuthStartup>()
                 .CaptureStartupErrors(true)
                 .Build();

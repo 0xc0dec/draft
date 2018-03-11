@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Config
@@ -13,9 +14,20 @@ namespace Infrastructure.Config
             return val;
         }
 
+        [CanBeNull]
+        public static string TryGet(this IConfiguration cfg, string path)
+        {
+            return cfg[path];
+        }
+
+        public static int? TryGetInt(this IConfiguration cfg, string path)
+        {
+            return int.TryParse(cfg.TryGet(path), out var val) ? val : (int?) null;
+        }
+
         public static string Get(this IConfiguration cfg, string path)
         {
-            var val = cfg[path];
+            var val = cfg.TryGet(path);
             if (val == null)
                 throw new ConfigException($"Configuration key '{path}' not found");
             return val;

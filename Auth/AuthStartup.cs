@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using JetBrains.Annotations;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,24 +8,24 @@ namespace Auth
 {
     public class AuthStartup
     {
-        public AuthStartup(IConfiguration configuration)
+        private readonly IConfiguration cfg;
+
+        public AuthStartup(IConfiguration cfg)
         {
-            Configuration = configuration;
+            this.cfg = cfg;
         }
 
-        public IConfiguration Configuration { get; }
-
+        [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
         }
 
+        [UsedImplicitly]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseMvc();
         }

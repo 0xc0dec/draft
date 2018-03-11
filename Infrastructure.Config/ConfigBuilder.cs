@@ -1,14 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.IO;
+using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Config
 {
     public static class ConfigBuilder
     {
-        public static IConfigurationRoot Build(string[] cmdArgs)
+        public static IConfigurationRoot Build(string[] cmdArgs, string workingDir)
         {
             return new ConfigurationBuilder()
-                .AddJsonFile("config.json", true, true)
-                .AddJsonFile("config.local.json", true, true)
+                .AddJsonFile(Path.Combine(workingDir, "config.json"), true, true)
+                .AddJsonFile(Path.Combine(workingDir, "config.local.json"), true, true)
                 .AddCommandLine(cmdArgs)
                 .AddEnvironmentVariables()
                 .Build();
