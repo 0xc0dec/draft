@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Infrastructure.Config;
+using Infrastructure.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,7 @@ namespace Auth
                 .UseSetting("detailedErrors", "true")
                 .ConfigureServices(services => services.AddSingleton<IAuthConfig>(config))
                 .UseStartup<AuthStartup>()
+                .UseLogging()
                 .CaptureStartupErrors(true)
                 .Build();
             host.Run();
