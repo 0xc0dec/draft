@@ -6,8 +6,6 @@ namespace Auth
 {
     public class AuthConfig: IAuthConfig
     {
-        public int? Port => cfg.TryGetInt("port");
-
         [CanBeNull]
         public string BindUrl => cfg.TryGet("url");
 
