@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using Infrastructure.Logging;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ namespace Auth
         [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services)
         {
+            services.WithLogging(cfg);
             services.AddMvc();
         }
 

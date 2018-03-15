@@ -1,3 +1,11 @@
 ﻿{
-  "url": "http://0.0.0.0:9000"
+    "url": "http://0.0.0.0:9000",
+    "serilog": {
+        "MinimumLevel": "Debug",
+        "WriteTo": [
+            {
+                "Name": "ColoredConsole"
+            }
+        ]
+    }
 }
