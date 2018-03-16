@@ -5,6 +5,13 @@
         "WriteTo": [
             {
                 "Name": "ColoredConsole"
+            },
+            {
+                "Name": "RollingFile",
+                "Args": {
+                    "pathFormat": "logs/log-{Date}.txt",
+                    "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] [{SourceContext}] [{EventId}] {Message}{NewLine}{Exception}"
+                }
             }
         ]
     }

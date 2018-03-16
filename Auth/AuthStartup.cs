@@ -1,7 +1,12 @@
-﻿using Infrastructure.Logging;
+﻿using System.Security;
+using IdentityServer4;
+using IdentityServer4.Stores;
+using Infrastructure.Logging;
+using Infrastructure.Utils;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,7 +25,21 @@ namespace Auth
         public void ConfigureServices(IServiceCollection services)
         {
             services.WithLogging(cfg);
+            services.Configure<RouteOptions>(options => { options.LowercaseUrls = true; });
             services.AddMvc();
+
+//            services.AddAuthentication()
+//                .AddGoogle(options =>
+//                {
+//                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme; 
+//                    // TODO client id
+//                });
+
+            var cert = SigningCertificate.Create(GetType().Assembly.GetEmbeddedFile("dev.pfx"), "123456"); // TODO
+            services.AddIdentityServer()
+                .AddSigningCredential(cert)
+                .AddInMemoryApiResources(IdentityServerDefs.Resources)
+                .AddInMemoryClients(IdentityServerDefs.Clients);
         }
 
         [UsedImplicitly]
@@ -29,6 +48,7 @@ namespace Auth
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseIdentityServer();
             app.UseMvc();
         }
     }

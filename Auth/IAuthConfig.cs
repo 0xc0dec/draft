@@ -6,5 +6,7 @@ namespace Auth
     {
         [CanBeNull]
         string BindUrl { get; }
+        
+        
     }
 }

@@ -6,6 +6,10 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="dev.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
   </ItemGroup>
   <ItemGroup>
@@ -15,5 +19,6 @@
     <ProjectReference Include="..\Infrastructure.Annotations\Infrastructure.Annotations.csproj" />
     <ProjectReference Include="..\Infrastructure.Config\Infrastructure.Config.csproj" />
     <ProjectReference Include="..\Infrastructure.Logging\Infrastructure.Logging.csproj" />
+    <ProjectReference Include="..\Infrastructure.Utils\Infrastructure.Utils.csproj" />
   </ItemGroup>
 </Project>
