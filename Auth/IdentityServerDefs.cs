@@ -2,7 +2,7 @@
 
 namespace Auth
 {
-    public static class IdentityServerDefs
+    internal static class IdentityServerDefs
     {
         public static ApiResource[] Resources { get; } = 
         {

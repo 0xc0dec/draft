@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Auth
 {
-    public class AuthProgram
+    internal sealed class AuthProgram
     {
         public static void Main(string[] args)
         {

@@ -2,7 +2,7 @@
 
 namespace Auth
 {
-    public static class SigningCertificate
+    internal static class SigningCertificate
     {
         public static X509Certificate2 Create(byte[] content, string pass)
         {

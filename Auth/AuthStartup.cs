@@ -1,7 +1,4 @@
-﻿using System.Security;
-using IdentityServer4;
-using IdentityServer4.Stores;
-using Infrastructure.Logging;
+﻿using Infrastructure.Logging;
 using Infrastructure.Utils;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth
 {
-    public class AuthStartup
+    internal sealed class AuthStartup
     {
         private readonly IConfiguration cfg;
 
