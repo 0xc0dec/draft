@@ -1,19 +1,12 @@
-﻿using Infrastructure.Config;
-using JetBrains.Annotations;
+﻿using Infrastructure.Hosting;
 using Microsoft.Extensions.Configuration;
 
 namespace Auth
 {
-    public class AuthConfig: IAuthConfig
+    public class AuthConfig: WebHostConfig, IAuthConfig
     {
-        [CanBeNull]
-        public string BindUrl => cfg.TryGet("url");
-
-        private readonly IConfiguration cfg;
-
-        public AuthConfig(IConfiguration cfg)
+        public AuthConfig(IConfiguration cfg) : base(cfg)
         {
-            this.cfg = cfg;
         }
     }
 }

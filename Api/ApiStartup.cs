@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Api
 {
-    public class Startup
+    internal sealed class ApiStartup
     {
         public void ConfigureServices(IServiceCollection services)
         {
@@ -14,9 +14,7 @@ namespace Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseMvc();
         }

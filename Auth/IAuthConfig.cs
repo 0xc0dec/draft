@@ -1,12 +1,8 @@
-﻿using JetBrains.Annotations;
+﻿using Infrastructure.Hosting;
 
 namespace Auth
 {
-    public interface IAuthConfig
+    public interface IAuthConfig: IWebHostConfig
     {
-        [CanBeNull]
-        string BindUrl { get; }
-        
-        
     }
 }
