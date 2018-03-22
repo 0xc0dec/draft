@@ -11,10 +11,11 @@ namespace Infrastructure.Hosting
             where TConfig: class, IWebHostConfig 
         {
             var host = new WebHostBuilder()
+                .UseKestrel()
                 .UseUrls(config.BindUrl ?? "http://0.0.0.0:12500")
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseSetting("detailedErrors", "true")
-                .ConfigureServices(services => services.AddSingleton<TConfig>(config))
+                .ConfigureServices(services => services.AddSingleton(config))
                 .UseStartup<TStartup>()
                 .CaptureStartupErrors(true)
                 .Build();
