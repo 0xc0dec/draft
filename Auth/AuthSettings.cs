@@ -3,9 +3,9 @@ using Microsoft.Extensions.Configuration;
 
 namespace Auth
 {
-    internal sealed class AuthConfig: WebHostConfig, IAuthConfig
+    internal sealed class AuthSettings: WebHostSettings, IAuthSettings
     {
-        public AuthConfig(IConfiguration cfg) : base(cfg)
+        public AuthSettings(IConfiguration cfg) : base(cfg)
         {
         }
     }

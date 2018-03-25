@@ -4,11 +4,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace Api
 {
-    internal sealed class ApiConfig : WebHostConfig, IApiConfig
+    internal sealed class ApiSettings : WebHostSettings, IApiSettings
     {
         public string AuthorityUrl => cfg.GetString("authorityUrl");
 
-        public ApiConfig(IConfiguration cfg) : base(cfg)
+        public ApiSettings(IConfiguration cfg) : base(cfg)
         {
         }
     }

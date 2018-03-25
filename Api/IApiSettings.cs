@@ -2,7 +2,7 @@
 
 namespace Api
 {
-    internal interface IApiConfig: IWebHostConfig
+    internal interface IApiSettings: IWebHostSettings
     {
         string AuthorityUrl { get; }
     }

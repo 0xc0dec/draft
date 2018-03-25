@@ -8,15 +8,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth
 {
-    internal sealed class AuthHost: HostBase
+    internal sealed class AuthHost: WebHostBase
     {
-        private readonly AuthConfig config;
+        private readonly AuthSettings settings;
 
-        protected override string BindUrl => config.BindUrl ?? "http://0.0.0.0:12000";
+        protected override string BindUrl => settings.BindUrl ?? "http://0.0.0.0:12000";
 
         public AuthHost(string[] cmd): base(cmd)
         {
-            config = new AuthConfig(Config);
+            settings = new AuthSettings(Config);
         }
 
         protected override void ConfigureServices(WebHostBuilderContext context, IServiceCollection services)

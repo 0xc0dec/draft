@@ -2,7 +2,7 @@
 
 namespace Auth
 {
-    internal interface IAuthConfig: IWebHostConfig
+    internal interface IAuthSettings: IWebHostSettings
     {
     }
 }

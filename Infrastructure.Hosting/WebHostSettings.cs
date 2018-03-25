@@ -4,14 +4,14 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Hosting
 {
-    public class WebHostConfig: IWebHostConfig
+    public class WebHostSettings: IWebHostSettings
     {
         [CanBeNull]
         public string BindUrl => cfg.TryGetString("url");
 
         protected readonly IConfiguration cfg;
 
-        public WebHostConfig(IConfiguration cfg)
+        public WebHostSettings(IConfiguration cfg)
         {
             this.cfg = cfg;
         }

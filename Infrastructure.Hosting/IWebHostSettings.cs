@@ -2,7 +2,7 @@
 
 namespace Infrastructure.Hosting
 {
-    public interface IWebHostConfig
+    public interface IWebHostSettings
     {
         [CanBeNull]
         string BindUrl { get; }

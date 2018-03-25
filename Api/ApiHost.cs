@@ -8,20 +8,20 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Api
 {
-    public class ApiHost: HostBase
+    public class ApiHost: WebHostBase
     {
-        private readonly IApiConfig config;
+        private readonly IApiSettings settings;
 
-        protected override string BindUrl => config.BindUrl ?? "http://0.0.0.0:12001";
+        protected override string BindUrl => settings.BindUrl ?? "http://0.0.0.0:12001";
 
         public ApiHost(string[] cmd): base(cmd)
         {
-            config = new ApiConfig(Config);
+            settings = new ApiSettings(Config);
         }
 
         protected override void ConfigureServices(WebHostBuilderContext context, IServiceCollection services)
         {
-            services.AddSingleton(config);
+            services.AddSingleton(settings);
             services.WithLogging(Config);
             
             services.AddMvc();
@@ -39,7 +39,7 @@ namespace Api
                 {
                     options.EnableCaching = true;
                     options.CacheDuration = TimeSpan.FromHours(1);
-                    options.Authority = config.AuthorityUrl;
+                    options.Authority = settings.AuthorityUrl;
                     options.RequireHttpsMetadata = false; // TODO?
                     options.LegacyAudienceValidation = false;
                 });
