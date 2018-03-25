@@ -1,27 +1,27 @@
-﻿using Infrastructure.Logging;
+﻿using Infrastructure.Hosting;
+using Infrastructure.Logging;
 using Infrastructure.Utils;
-using JetBrains.Annotations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Auth
 {
-    internal sealed class AuthStartup
+    internal sealed class AuthHost: HostBase
     {
-        private readonly IConfiguration cfg;
+        private readonly AuthConfig config;
 
-        public AuthStartup(IConfiguration cfg)
+        protected override string BindUrl => config.BindUrl ?? "http://0.0.0.0:12000";
+
+        public AuthHost(string[] cmd): base(cmd)
         {
-            this.cfg = cfg;
+            config = new AuthConfig(Config);
         }
 
-        [UsedImplicitly]
-        public void ConfigureServices(IServiceCollection services)
+        protected override void ConfigureServices(WebHostBuilderContext context, IServiceCollection services)
         {
-            services.WithLogging(cfg);
+            services.WithLogging(Config);
             services.Configure<RouteOptions>(options => { options.LowercaseUrls = true; });
             services.AddMvc();
 
@@ -39,12 +39,12 @@ namespace Auth
                 .AddInMemoryClients(IdentityServerDefs.Clients);
         }
 
-        [UsedImplicitly]
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        protected override void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
+            // TODO
+//            if (env.IsDevelopment())
+//                app.UseDeveloperExceptionPage();
+            
             app.UseIdentityServer();
             app.UseMvc();
         }

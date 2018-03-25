@@ -7,9 +7,9 @@ namespace Infrastructure.Hosting
     public class WebHostConfig: IWebHostConfig
     {
         [CanBeNull]
-        public string BindUrl => cfg.TryGet("url");
+        public string BindUrl => cfg.TryGetString("url");
 
-        private readonly IConfiguration cfg;
+        protected readonly IConfiguration cfg;
 
         public WebHostConfig(IConfiguration cfg)
         {

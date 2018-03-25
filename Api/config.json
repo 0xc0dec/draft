@@ -1,18 +1,19 @@
 ﻿{
-  "url": "http://0.0.0.0:9001",
-  "serilog": {
-    "MinimumLevel": "Debug",
-    "WriteTo": [
-      {
-        "Name": "ColoredConsole"
-      },
-      {
-        "Name": "RollingFile",
-        "Args": {
-          "pathFormat": "logs/log-{Date}.txt",
-          "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] [{SourceContext}] [{EventId}] {Message}{NewLine}{Exception}"
-        }
-      }
-    ]
-  }
+    "url": "http://0.0.0.0:9001",
+    "authorityUrl": "http://0.0.0.0:9000",
+    "serilog": {
+        "MinimumLevel": "Debug",
+        "WriteTo": [
+            {
+                "Name": "ColoredConsole"
+            },
+            {
+                "Name": "RollingFile",
+                "Args": {
+                    "pathFormat": "logs/log-{Date}.txt",
+                    "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] [{SourceContext}] [{EventId}] {Message}{NewLine}{Exception}"
+                }
+            }
+        ]
+    }
 }

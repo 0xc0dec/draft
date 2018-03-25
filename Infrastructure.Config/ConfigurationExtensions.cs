@@ -15,19 +15,19 @@ namespace Infrastructure.Config
         }
 
         [CanBeNull]
-        public static string TryGet(this IConfiguration cfg, string path)
+        public static string TryGetString(this IConfiguration cfg, string path)
         {
             return cfg[path];
         }
 
         public static int? TryGetInt(this IConfiguration cfg, string path)
         {
-            return int.TryParse(cfg.TryGet(path), out var val) ? val : (int?) null;
+            return int.TryParse(cfg.TryGetString(path), out var val) ? val : (int?) null;
         }
 
-        public static string Get(this IConfiguration cfg, string path)
+        public static string GetString(this IConfiguration cfg, string path)
         {
-            var val = cfg.TryGet(path);
+            var val = cfg.TryGetString(path);
             if (val == null)
                 throw new ConfigException($"Configuration key '{path}' not found");
             return val;
