@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Config
+namespace Infrastructure.Configuration
 {
     public static class ConfigurationExtensions
     {
@@ -10,7 +10,7 @@ namespace Infrastructure.Config
         {
             var val = getter(cfg);
             if (val == null)
-                throw new ConfigException("Unable to get config value using custom getter");
+                throw new ConfigurationException("Unable to get config value using custom getter");
             return val;
         }
 
@@ -29,7 +29,7 @@ namespace Infrastructure.Config
         {
             var val = cfg.TryGetString(path);
             if (val == null)
-                throw new ConfigException($"Configuration key '{path}' not found");
+                throw new ConfigurationException($"Configuration key '{path}' not found");
             return val;
         }
     }

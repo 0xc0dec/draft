@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Config
+namespace Infrastructure.Configuration
 {
     public static class ConfigBuilder
     {

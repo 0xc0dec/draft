@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{96105165-3CAD-4368-8314-BBEA91702CE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Config", "Infrastructure.Config\Infrastructure.Config.csproj", "{E414C135-1202-4912-8457-8A0AD10C2987}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Settings", "Infrastructure.Settings\Infrastructure.Settings.csproj", "{E414C135-1202-4912-8457-8A0AD10C2987}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Annotations", "Infrastructure.Annotations\Infrastructure.Annotations.csproj", "{4163AA25-F3CD-4857-AD6F-8EEFDB34A7E6}"
 EndProject

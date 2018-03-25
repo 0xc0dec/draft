@@ -1,4 +1,4 @@
-﻿using Infrastructure.Config;
+﻿using Infrastructure.Configuration;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
 

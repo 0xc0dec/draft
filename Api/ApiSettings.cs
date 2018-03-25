@@ -1,4 +1,4 @@
-﻿using Infrastructure.Config;
+﻿using Infrastructure.Configuration;
 using Infrastructure.Hosting;
 using Microsoft.Extensions.Configuration;
 

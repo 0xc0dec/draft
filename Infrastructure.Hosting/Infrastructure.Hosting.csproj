@@ -8,6 +8,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure.Annotations\Infrastructure.Annotations.csproj" />
-    <ProjectReference Include="..\Infrastructure.Config\Infrastructure.Config.csproj" />
+    <ProjectReference Include="..\Infrastructure.Settings\Infrastructure.Settings.csproj" />
   </ItemGroup>
 </Project>
