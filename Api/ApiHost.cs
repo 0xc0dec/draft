@@ -27,8 +27,6 @@ namespace Api
             services.AddMvc();
             services.AddAuthorization();
 
-            var serviceProvider = services.BuildServiceProvider();
-
             services
                 .AddAuthentication(options =>
                 {

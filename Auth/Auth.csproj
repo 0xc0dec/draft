@@ -23,13 +23,4 @@
     <ProjectReference Include="..\Infrastructure.Logging\Infrastructure.Logging.csproj" />
     <ProjectReference Include="..\Infrastructure.Utils\Infrastructure.Utils.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="logs\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="logs\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="logs\**" />
-  </ItemGroup>
 </Project>

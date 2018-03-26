@@ -32,9 +32,9 @@ namespace Auth
 //                    // TODO client id
 //                });
 
-            var cert = SigningCertificate.Create(GetType().Assembly.GetEmbeddedFile("dev.pfx"), "123456"); // TODO
+//            var cert = SigningCertificate.Create(GetType().Assembly.GetEmbeddedFile("dev.pfx"), "123456"); // TODO
             services.AddIdentityServer()
-                .AddSigningCredential(cert)
+                .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(IdentityServerDefs.Resources)
                 .AddInMemoryClients(IdentityServerDefs.Clients);
         }
